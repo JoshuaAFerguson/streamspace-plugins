@@ -1,0 +1,145 @@
+apiVersion: stream.space/v1alpha1
+kind: PluginCatalog
+metadata:
+  name: streamspace-official-plugins
+  version: "1.0.0"
+  repository: https://github.com/JoshuaAFerguson/streamspace-plugins
+  description: Official StreamSpace plugin catalog
+
+spec:
+  categories:
+    - name: official
+      displayName: Official Plugins
+      description: Plugins maintained by the StreamSpace team
+      icon: ✓
+      verified: true
+      plugins: 0  # Will be updated as plugins are added
+
+    - name: community
+      displayName: Community Plugins
+      description: Community-contributed plugins
+      icon: 🌟
+      verified: false
+      plugins: 0  # Will be updated as plugins are added
+
+  pluginTypes:
+    - type: extension
+      displayName: Extension
+      description: Adds new features and UI components
+      icon: 🔌
+
+    - type: webhook
+      displayName: Webhook
+      description: Reacts to system events
+      icon: 🔔
+
+    - type: integration
+      displayName: Integration
+      description: Connects to external services
+      icon: 🔗
+
+    - type: theme
+      displayName: Theme
+      description: Customizes UI appearance
+      icon: 🎨
+
+  permissions:
+    - name: read:sessions
+      description: View session information
+      scope: read
+
+    - name: write:sessions
+      description: Create and modify sessions
+      scope: write
+
+    - name: read:users
+      description: View user information
+      scope: read
+
+    - name: write:users
+      description: Create and modify users
+      scope: write
+
+    - name: read:templates
+      description: View template information
+      scope: read
+
+    - name: write:templates
+      description: Create and modify templates
+      scope: write
+
+    - name: admin
+      description: Administrative access
+      scope: admin
+      dangerous: true
+
+    - name: network
+      description: Make external HTTP requests
+      scope: network
+      dangerous: true
+
+  events:
+    - name: session.created
+      description: Fired when a session is created
+    - name: session.started
+      description: Fired when a session starts
+    - name: session.stopped
+      description: Fired when a session stops
+    - name: session.deleted
+      description: Fired when a session is deleted
+    - name: user.created
+      description: Fired when a user is created
+    - name: user.updated
+      description: Fired when a user is updated
+    - name: user.deleted
+      description: Fired when a user is deleted
+    - name: user.login
+      description: Fired when a user logs in
+    - name: template.created
+      description: Fired when a template is created
+    - name: template.updated
+      description: Fired when a template is updated
+    - name: template.deleted
+      description: Fired when a template is deleted
+    - name: plugin.installed
+      description: Fired when a plugin is installed
+    - name: plugin.enabled
+      description: Fired when a plugin is enabled
+    - name: plugin.disabled
+      description: Fired when a plugin is disabled
+    - name: plugin.uninstalled
+      description: Fired when a plugin is uninstalled
+    - name: system.startup
+      description: Fired when the system starts
+    - name: system.shutdown
+      description: Fired when the system shuts down
+    - name: audit.violation
+      description: Fired when an audit violation occurs
+
+  # Plugin listings (will be populated as plugins are added)
+  plugins: []
+    # Example structure:
+    # - name: session-recorder
+    #   category: official
+    #   displayName: Session Recorder
+    #   description: Record and replay user sessions
+    #   type: extension
+    #   author: StreamSpace Team
+    #   version: "1.0.0"
+    #   path: official/session-recorder
+    #   permissions:
+    #     - read:sessions
+    #     - write:sessions
+    #   tags: [recording, replay, audit]
+    #   verified: true
+    #   downloads: 0
+    #   rating: 0.0
+
+  stats:
+    totalPlugins: 0
+    officialPlugins: 0
+    communityPlugins: 0
+    lastUpdated: "2025-11-15"
+    compatibleVersions:
+      - "v1.0.0"
+      - "v1.1.0"

@@ -1,0 +1,179 @@
+name: Validate Plugins
+
+on:
+  pull_request:
+    paths:
+      - 'official/**'
+      - 'community/**'
+      - 'catalog.yaml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'official/**'
+      - 'community/**'
+      - 'catalog.yaml'
+
+jobs:
+  validate:
+    name: Validate Plugin Manifests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate catalog.yaml
+        run: |
+          echo "Validating catalog.yaml..."
+          if [ -f catalog.yaml ]; then
+            # Check YAML syntax
+            python3 -c "import yaml; yaml.safe_load(open('catalog.yaml'))" || exit 1
+            echo "✓ catalog.yaml is valid YAML"
+          else
+            echo "ERROR: catalog.yaml not found"
+            exit 1
+          fi
+
+      - name: Find and validate plugin manifests
+        run: |
+          echo "Scanning for plugin manifests..."
+          FOUND_PLUGINS=0
+          ERRORS=0
+
+          for dir in official/* community/*; do
+            if [ -d "$dir" ] && [ -f "$dir/manifest.json" ]; then
+              FOUND_PLUGINS=$((FOUND_PLUGINS + 1))
+              PLUGIN_NAME=$(basename "$dir")
+
+              echo ""
+              echo "Validating plugin: $PLUGIN_NAME"
+              echo "================================"
+
+              # Validate JSON syntax
+              if ! python3 -c "import json; json.load(open('$dir/manifest.json'))"; then
+                echo "ERROR: Invalid JSON in $dir/manifest.json"
+                ERRORS=$((ERRORS + 1))
+                continue
+              fi
+
+              # Check required fields
+              REQUIRED_FIELDS=("name" "version" "displayName" "description" "type" "author" "license" "permissions" "entrypoints")
+
+              for field in "${REQUIRED_FIELDS[@]}"; do
+                if ! grep -q "\"$field\"" "$dir/manifest.json"; then
+                  echo "ERROR: Missing required field '$field' in $dir/manifest.json"
+                  ERRORS=$((ERRORS + 1))
+                fi
+              done
+
+              # Check for entry point file
+              ENTRY_POINT=$(python3 -c "import json; print(json.load(open('$dir/manifest.json')).get('entrypoints', {}).get('main', 'index.js'))" 2>/dev/null || echo "index.js")
+              if [ ! -f "$dir/$ENTRY_POINT" ]; then
+                echo "ERROR: Entry point file '$ENTRY_POINT' not found in $dir"
+                ERRORS=$((ERRORS + 1))
+              fi
+
+              # Check for README
+              if [ ! -f "$dir/README.md" ]; then
+                echo "WARNING: README.md not found in $dir"
+              fi
+
+              # Validate plugin type
+              PLUGIN_TYPE=$(python3 -c "import json; print(json.load(open('$dir/manifest.json')).get('type', ''))" 2>/dev/null || echo "")
+              if [[ ! "$PLUGIN_TYPE" =~ ^(extension|webhook|integration|theme)$ ]]; then
+                echo "ERROR: Invalid plugin type '$PLUGIN_TYPE' in $dir/manifest.json"
+                echo "       Must be one of: extension, webhook, integration, theme"
+                ERRORS=$((ERRORS + 1))
+              fi
+
+              # Validate version format
+              VERSION=$(python3 -c "import json; print(json.load(open('$dir/manifest.json')).get('version', ''))" 2>/dev/null || echo "")
+              if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+                echo "ERROR: Invalid version format '$VERSION' in $dir/manifest.json"
+                echo "       Must be semantic version (e.g., 1.0.0)"
+                ERRORS=$((ERRORS + 1))
+              fi
+
+              if [ $ERRORS -eq 0 ]; then
+                echo "✓ $PLUGIN_NAME passed validation"
+              fi
+            fi
+          done
+
+          echo ""
+          echo "================================"
+          echo "Validation Summary"
+          echo "================================"
+          echo "Total plugins found: $FOUND_PLUGINS"
+          echo "Validation errors: $ERRORS"
+
+          if [ $ERRORS -gt 0 ]; then
+            echo ""
+            echo "❌ Validation failed with $ERRORS error(s)"
+            exit 1
+          else
+            echo ""
+            echo "✅ All plugins validated successfully!"
+          fi
+
+      - name: Check catalog consistency
+        run: |
+          echo "Checking catalog consistency..."
+
+          # Count plugins in directories
+          ACTUAL_PLUGINS=$(find official community -type f -name "manifest.json" 2>/dev/null | wc -l)
+
+          # Count plugins in catalog
+          CATALOG_PLUGINS=$(grep -c "path: " catalog.yaml 2>/dev/null || echo 0)
+
+          echo "Plugins in directories: $ACTUAL_PLUGINS"
+          echo "Plugins in catalog: $CATALOG_PLUGINS"
+
+          if [ "$ACTUAL_PLUGINS" != "$CATALOG_PLUGINS" ]; then
+            echo "WARNING: Plugin count mismatch!"
+            echo "Please update catalog.yaml to include all plugins"
+          else
+            echo "✓ Catalog is consistent"
+          fi
+
+      - name: Security scan
+        run: |
+          echo "Running security checks..."
+
+          # Check for common security issues
+          SECURITY_ISSUES=0
+
+          # Check for hardcoded credentials
+          if grep -r "apiKey\|api_key\|API_KEY" official/ community/ --include="*.js" --include="*.json" | grep -v "config.get\|process.env"; then
+            echo "WARNING: Possible hardcoded API keys found"
+            SECURITY_ISSUES=$((SECURITY_ISSUES + 1))
+          fi
+
+          # Check for eval usage
+          if grep -r "eval(" official/ community/ --include="*.js"; then
+            echo "WARNING: Use of eval() detected (potential security risk)"
+            SECURITY_ISSUES=$((SECURITY_ISSUES + 1))
+          fi
+
+          if [ $SECURITY_ISSUES -gt 0 ]; then
+            echo "⚠️  Security warnings found: $SECURITY_ISSUES"
+            echo "Please review security guidelines"
+          else
+            echo "✓ No obvious security issues detected"
+          fi
+
+      - name: Summary
+        if: success()
+        run: |
+          echo ""
+          echo "✅ All validation checks passed!"
+          echo ""
+          echo "Plugin Statistics:"
+          echo "- Official plugins: $(find official -type f -name "manifest.json" 2>/dev/null | wc -l)"
+          echo "- Community plugins: $(find community -type f -name "manifest.json" 2>/dev/null | wc -l)"
