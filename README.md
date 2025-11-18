@@ -10,16 +10,36 @@ This repository contains official and community-contributed plugins that extend 
 
 ```
 streamspace-plugins/
-├── official/          # Official StreamSpace plugins
-│   ├── session-recorder/
-│   ├── audit-logger/
-│   └── slack-integration/
-├── community/         # Community-contributed plugins
-│   ├── github-integration/
-│   └── custom-theme/
-├── catalog.yaml       # Plugin discovery metadata
-├── README.md          # This file
-└── CONTRIBUTING.md    # Contribution guidelines
+├── streamspace-slack/              # Slack integration plugin
+├── streamspace-teams/              # Microsoft Teams plugin
+├── streamspace-discord/            # Discord integration plugin
+├── streamspace-pagerduty/          # PagerDuty integration plugin
+├── streamspace-email/              # SMTP email plugin
+├── streamspace-calendar/           # Calendar integration plugin
+├── streamspace-datadog/            # Datadog monitoring plugin
+├── streamspace-newrelic/           # New Relic monitoring plugin
+├── streamspace-sentry/             # Sentry error tracking plugin
+├── streamspace-elastic-apm/        # Elastic APM plugin
+├── streamspace-honeycomb/          # Honeycomb observability plugin
+├── streamspace-compliance/         # Compliance framework plugin
+├── streamspace-dlp/                # Data loss prevention plugin
+├── streamspace-audit-advanced/     # Advanced audit logging plugin
+├── streamspace-recording/          # Session recording plugin
+├── streamspace-snapshots/          # Session snapshots plugin
+├── streamspace-multi-monitor/      # Multi-monitor support plugin
+├── streamspace-workflows/          # Workflow automation plugin
+├── streamspace-analytics-advanced/ # Advanced analytics plugin
+├── streamspace-auth-saml/          # SAML authentication plugin
+├── streamspace-auth-oauth/         # OAuth/OIDC authentication plugin
+├── streamspace-storage-s3/         # S3 storage backend plugin
+├── streamspace-storage-azure/      # Azure storage backend plugin
+├── streamspace-storage-gcs/        # Google Cloud Storage plugin
+├── streamspace-billing/            # Billing & usage tracking plugin
+├── streamspace-node-manager/       # Kubernetes node manager plugin
+├── catalog.yaml                    # Plugin discovery metadata
+├── claude.md                       # AI context documentation
+├── README.md                       # This file
+└── CONTRIBUTING.md                 # Contribution guidelines
 ```
 
 ## Plugin Categories
@@ -62,10 +82,10 @@ repositories:
 
 ```bash
 # Using StreamSpace CLI
-streamspace plugin install session-recorder
+streamspace plugin install streamspace-recording
 
 # Or manually
-kubectl apply -f https://raw.githubusercontent.com/JoshuaAFerguson/streamspace-plugins/main/official/session-recorder/manifest.yaml
+kubectl apply -f https://raw.githubusercontent.com/JoshuaAFerguson/streamspace-plugins/main/streamspace-recording/manifest.yaml
 ```
 
 ### List Available Plugins
@@ -165,9 +185,9 @@ module.exports = {
 git clone https://github.com/JoshuaAFerguson/streamspace-plugins.git
 cd streamspace-plugins
 
-# Create plugin directory (community or official)
-mkdir community/my-plugin
-cd community/my-plugin
+# Create plugin directory
+mkdir streamspace-my-plugin
+cd streamspace-my-plugin
 
 # Initialize
 npm init -y
@@ -218,7 +238,7 @@ curl -X POST https://streamspace.local/api/plugins/my-plugin/enable \
 ### 3. Submit for Inclusion
 
 1. Fork this repository
-2. Add your plugin to `community/`
+2. Add your plugin directory (e.g., `streamspace-my-plugin/`)
 3. Update `catalog.yaml`
 4. Submit a pull request
 
@@ -288,7 +308,7 @@ See [Security Guidelines](CONTRIBUTING.md#security) for details.
 ### Webhook Plugin - Slack Notifications
 
 ```javascript
-// official/slack-integration/index.js
+// streamspace-slack/index.js
 module.exports = {
   async onLoad({ api, config }) {
     const webhookUrl = config.get('slackWebhookUrl');

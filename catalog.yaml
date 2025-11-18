@@ -126,7 +126,7 @@ spec:
       type: webhook
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-slack
+      path: streamspace-slack
       permissions:
         - network
       tags: [notifications, slack, integration, messaging]
@@ -141,7 +141,7 @@ spec:
       type: webhook
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-teams
+      path: streamspace-teams
       permissions:
         - network
       tags: [notifications, teams, microsoft, integration]
@@ -156,7 +156,7 @@ spec:
       type: webhook
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-discord
+      path: streamspace-discord
       permissions:
         - network
       tags: [notifications, discord, integration]
@@ -171,7 +171,7 @@ spec:
       type: webhook
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-pagerduty
+      path: streamspace-pagerduty
       permissions:
         - network
       tags: [monitoring, pagerduty, alerting, incidents]
@@ -186,7 +186,7 @@ spec:
       type: integration
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-email
+      path: streamspace-email
       permissions:
         - network
       tags: [email, smtp, notifications, alerts]
@@ -201,7 +201,7 @@ spec:
       type: integration
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-calendar
+      path: streamspace-calendar
       permissions:
         - network
       tags: [calendar, scheduling, google, outlook, ical]
@@ -217,7 +217,7 @@ spec:
       type: integration
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-datadog
+      path: streamspace-datadog
       permissions:
         - network
       tags: [monitoring, datadog, metrics, apm, observability]
@@ -232,7 +232,7 @@ spec:
       type: integration
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-newrelic
+      path: streamspace-newrelic
       permissions:
         - network
       tags: [monitoring, newrelic, apm, metrics, observability]
@@ -247,7 +247,7 @@ spec:
       type: integration
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-sentry
+      path: streamspace-sentry
       permissions:
         - network
       tags: [monitoring, sentry, errors, exceptions, performance]
@@ -262,7 +262,7 @@ spec:
       type: integration
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-elastic-apm
+      path: streamspace-elastic-apm
       permissions:
         - network
       tags: [monitoring, elastic, apm, performance, tracing]
@@ -277,7 +277,7 @@ spec:
       type: integration
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-honeycomb
+      path: streamspace-honeycomb
       permissions:
         - network
       tags: [monitoring, honeycomb, observability, tracing, debugging]
@@ -293,7 +293,7 @@ spec:
       type: extension
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-compliance
+      path: streamspace-compliance
       permissions:
         - read:sessions
         - read:users
@@ -310,7 +310,7 @@ spec:
       type: extension
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-dlp
+      path: streamspace-dlp
       permissions:
         - read:sessions
         - write:sessions
@@ -327,7 +327,7 @@ spec:
       type: extension
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-audit-advanced
+      path: streamspace-audit-advanced
       permissions:
         - read:sessions
         - read:users
@@ -345,7 +345,7 @@ spec:
       type: extension
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-recording
+      path: streamspace-recording
       permissions:
         - read:sessions
         - write:sessions
@@ -361,7 +361,7 @@ spec:
       type: extension
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-snapshots
+      path: streamspace-snapshots
       permissions:
         - read:sessions
         - write:sessions
@@ -377,7 +377,7 @@ spec:
       type: extension
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-multi-monitor
+      path: streamspace-multi-monitor
       permissions:
         - read:sessions
         - write:sessions
@@ -394,7 +394,7 @@ spec:
       type: extension
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-workflows
+      path: streamspace-workflows
       permissions:
         - read:sessions
         - write:sessions
@@ -412,7 +412,7 @@ spec:
       type: extension
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-analytics-advanced
+      path: streamspace-analytics-advanced
       permissions:
         - read:sessions
         - read:users
@@ -430,7 +430,7 @@ spec:
       type: integration
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-auth-saml
+      path: streamspace-auth-saml
       permissions:
         - admin
       tags: [saml, sso, authentication, enterprise, okta, onelogin, azure-ad]
@@ -445,7 +445,7 @@ spec:
       type: integration
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-auth-oauth
+      path: streamspace-auth-oauth
       permissions:
         - admin
       tags: [oauth2, oidc, sso, google, github, azure-ad, okta]
@@ -461,7 +461,7 @@ spec:
       type: integration
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-storage-s3
+      path: streamspace-storage-s3
       permissions:
         - network
       tags: [storage, s3, aws, minio, object-storage, cloud]
@@ -476,7 +476,7 @@ spec:
       type: integration
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-storage-azure
+      path: streamspace-storage-azure
       permissions:
         - network
       tags: [storage, azure, blob-storage, cloud, microsoft]
@@ -491,7 +491,7 @@ spec:
       type: integration
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-storage-gcs
+      path: streamspace-storage-gcs
       permissions:
         - network
       tags: [storage, gcs, google-cloud, cloud]
@@ -507,7 +507,7 @@ spec:
       type: extension
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-billing
+      path: streamspace-billing
       permissions:
         - network
         - admin
@@ -524,7 +524,7 @@ spec:
       type: extension
       author: StreamSpace Team
       version: "1.0.0"
-      path: official/streamspace-node-manager
+      path: streamspace-node-manager
       permissions:
         - admin
       tags: [kubernetes, nodes, infrastructure, auto-scaling, cluster-management]

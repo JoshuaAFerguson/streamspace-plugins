@@ -17,17 +17,36 @@ StreamSpace Plugins provides:
 
 ```
 streamspace-plugins/
-├── official/          # Official StreamSpace plugins
-│   ├── session-recorder/
-│   ├── audit-logger/
-│   └── slack-integration/
-├── community/         # Community-contributed plugins
-│   ├── github-integration/
-│   └── custom-theme/
-├── catalog.yaml       # Plugin discovery metadata
-├── README.md          # User documentation
-├── CONTRIBUTING.md    # Contribution guidelines
-└── claude.md          # This file - AI context
+├── streamspace-slack/              # Official plugins at root level
+├── streamspace-teams/
+├── streamspace-discord/
+├── streamspace-pagerduty/
+├── streamspace-email/
+├── streamspace-calendar/
+├── streamspace-datadog/
+├── streamspace-newrelic/
+├── streamspace-sentry/
+├── streamspace-elastic-apm/
+├── streamspace-honeycomb/
+├── streamspace-compliance/
+├── streamspace-dlp/
+├── streamspace-audit-advanced/
+├── streamspace-recording/
+├── streamspace-snapshots/
+├── streamspace-multi-monitor/
+├── streamspace-workflows/
+├── streamspace-analytics-advanced/
+├── streamspace-auth-saml/
+├── streamspace-auth-oauth/
+├── streamspace-storage-s3/
+├── streamspace-storage-azure/
+├── streamspace-storage-gcs/
+├── streamspace-billing/
+├── streamspace-node-manager/
+├── catalog.yaml                    # Plugin discovery metadata
+├── claude.md                       # This file - AI context
+├── README.md                       # User documentation
+└── CONTRIBUTING.md                 # Contribution guidelines
 ```
 
 ## Plugin Types
@@ -250,10 +269,10 @@ This file is the central registry for all plugins and is consumed by StreamSpace
 
 ## Common Tasks
 
-### Adding a New Official Plugin
+### Adding a New Plugin
 
-1. Create directory: `official/plugin-name/`
-2. Add required files (manifest.json, index.js, README.md)
+1. Create directory: `streamspace-plugin-name/`
+2. Add required files (manifest.json, plugin code, README.md)
 3. Update catalog.yaml with plugin entry
 4. Update README.md plugin list
 5. Commit and push changes
