@@ -4,9 +4,19 @@
   "displayName": "S3 Object Storage",
   "description": "AWS S3 and S3-compatible object storage backend for session recordings, snapshots, and file storage - supports AWS S3, MinIO, DigitalOcean Spaces, and Wasabi",
   "author": "StreamSpace Team",
-  "type": "system",
+  "license": "MIT",
+  "type": "extension",
   "category": "Storage",
   "tags": ["storage", "s3", "aws", "minio", "object-storage", "cloud"],
+
+  "requirements": {
+    "streamspaceVersion": ">=1.0.0"
+  },
+
+  "entrypoints": {
+    "main": "s3_plugin.go"
+  },
+
   "permissions": ["network", "admin_ui"],
   "configSchema": {
     "type": "object",

@@ -4,9 +4,19 @@
   "displayName": "Workflow Automation",
   "description": "Automate session lifecycle with triggers, actions, and custom workflow definitions",
   "author": "StreamSpace Team",
-  "type": "system",
+  "license": "MIT",
+  "type": "extension",
   "category": "Automation",
   "tags": ["workflows", "automation", "triggers", "actions"],
+
+  "requirements": {
+    "streamspaceVersion": ">=1.0.0"
+  },
+
+  "entrypoints": {
+    "main": "workflows_plugin.go"
+  },
+
   "permissions": ["database", "admin_ui"],
   "configSchema": {
     "type": "object",

@@ -8,7 +8,7 @@
   "homepage": "https://github.com/JoshuaAFerguson/streamspace-plugins/tree/main/streamspace-node-manager",
   "repository": "https://github.com/JoshuaAFerguson/streamspace-plugins",
   "icon": "node-manager-icon.png",
-  "type": "system",
+  "type": "extension",
   "category": "Infrastructure",
   "tags": ["kubernetes", "nodes", "infrastructure", "cluster-management", "admin"],
 

@@ -4,9 +4,19 @@
   "displayName": "Honeycomb Observability",
   "description": "High-definition observability with Honeycomb for deep system analysis and debugging",
   "author": "StreamSpace Team",
+  "license": "MIT",
   "type": "integration",
   "category": "Monitoring",
   "tags": ["monitoring", "honeycomb", "observability", "tracing", "debugging"],
+
+  "requirements": {
+    "streamspaceVersion": ">=1.0.0"
+  },
+
+  "entrypoints": {
+    "main": "honeycomb_plugin.go"
+  },
+
   "permissions": ["network"],
   "configSchema": {
     "type": "object",

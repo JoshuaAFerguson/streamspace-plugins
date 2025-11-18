@@ -4,9 +4,19 @@
   "displayName": "Sentry Error Tracking",
   "description": "Track errors, exceptions, and performance issues with Sentry integration",
   "author": "StreamSpace Team",
+  "license": "MIT",
   "type": "integration",
   "category": "Monitoring",
   "tags": ["monitoring", "sentry", "errors", "exceptions", "performance"],
+
+  "requirements": {
+    "streamspaceVersion": ">=1.0.0"
+  },
+
+  "entrypoints": {
+    "main": "sentry_plugin.go"
+  },
+
   "permissions": ["network"],
   "configSchema": {
     "type": "object",

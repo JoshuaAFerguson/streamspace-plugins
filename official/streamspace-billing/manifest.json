@@ -4,9 +4,19 @@
   "displayName": "Billing & Usage Tracking",
   "description": "Track resource usage, calculate costs, and manage subscriptions with Stripe integration",
   "author": "StreamSpace Team",
-  "type": "system",
+  "license": "MIT",
+  "type": "extension",
   "category": "Business",
   "tags": ["billing", "stripe", "usage", "subscriptions", "invoicing"],
+
+  "requirements": {
+    "streamspaceVersion": ">=1.0.0"
+  },
+
+  "entrypoints": {
+    "main": "billing_plugin.go"
+  },
+
   "permissions": ["network", "database", "admin_ui"],
   "configSchema": {
     "type": "object",

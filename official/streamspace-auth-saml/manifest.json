@@ -4,9 +4,19 @@
   "displayName": "SAML 2.0 Authentication",
   "description": "Enterprise SSO authentication with SAML 2.0 protocol - supports Okta, OneLogin, Azure AD, Google Workspace, JumpCloud, and Auth0",
   "author": "StreamSpace Team",
-  "type": "system",
+  "license": "MIT",
+  "type": "extension",
   "category": "Authentication",
   "tags": ["saml", "sso", "authentication", "enterprise", "okta", "onelogin", "azure-ad"],
+
+  "requirements": {
+    "streamspaceVersion": ">=1.0.0"
+  },
+
+  "entrypoints": {
+    "main": "saml_plugin.go"
+  },
+
   "permissions": ["network", "admin_ui"],
   "configSchema": {
     "type": "object",

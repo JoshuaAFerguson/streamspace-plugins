@@ -4,9 +4,19 @@
   "displayName": "Azure Blob Storage",
   "description": "Microsoft Azure Blob Storage backend for session recordings, snapshots, and file storage",
   "author": "StreamSpace Team",
-  "type": "system",
+  "license": "MIT",
+  "type": "extension",
   "category": "Storage",
   "tags": ["storage", "azure", "blob-storage", "cloud", "microsoft"],
+
+  "requirements": {
+    "streamspaceVersion": ">=1.0.0"
+  },
+
+  "entrypoints": {
+    "main": "azure_plugin.go"
+  },
+
   "permissions": ["network", "admin_ui"],
   "configSchema": {
     "type": "object",

@@ -5,7 +5,7 @@
   "description": "Advanced multi-monitor configuration for sessions with independent display streams and custom layouts",
   "author": "StreamSpace Team",
   "license": "MIT",
-  "type": "system",
+  "type": "extension",
   "category": "Advanced Features",
   "tags": ["multi-monitor", "displays", "vnc", "advanced"],
   "requirements": {"streamspaceVersion": ">=1.0.0"},

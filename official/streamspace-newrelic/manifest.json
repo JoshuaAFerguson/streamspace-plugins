@@ -4,9 +4,19 @@
   "displayName": "New Relic Monitoring",
   "description": "Send performance metrics, traces, and events to New Relic for full-stack observability",
   "author": "StreamSpace Team",
+  "license": "MIT",
   "type": "integration",
   "category": "Monitoring",
   "tags": ["monitoring", "newrelic", "apm", "metrics", "observability"],
+
+  "requirements": {
+    "streamspaceVersion": ">=1.0.0"
+  },
+
+  "entrypoints": {
+    "main": "newrelic_plugin.go"
+  },
+
   "permissions": ["network"],
   "configSchema": {
     "type": "object",

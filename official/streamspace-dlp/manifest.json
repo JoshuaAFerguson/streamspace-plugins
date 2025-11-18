@@ -4,9 +4,19 @@
   "displayName": "Data Loss Prevention (DLP)",
   "description": "Prevent data exfiltration with comprehensive controls for clipboard, file transfers, screen capture, printing, USB devices, and network access",
   "author": "StreamSpace Team",
-  "type": "system",
+  "license": "MIT",
+  "type": "extension",
   "category": "Security",
   "tags": ["dlp", "data-loss-prevention", "security", "clipboard", "file-transfer", "exfiltration"],
+
+  "requirements": {
+    "streamspaceVersion": ">=1.0.0"
+  },
+
+  "entrypoints": {
+    "main": "dlp_plugin.go"
+  },
+
   "permissions": ["database", "admin_ui", "network"],
   "configSchema": {
     "type": "object",

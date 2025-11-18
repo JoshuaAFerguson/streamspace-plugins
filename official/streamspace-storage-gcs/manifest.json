@@ -4,9 +4,19 @@
   "displayName": "Google Cloud Storage",
   "description": "Google Cloud Storage backend for session recordings, snapshots, and file storage",
   "author": "StreamSpace Team",
-  "type": "system",
+  "license": "MIT",
+  "type": "extension",
   "category": "Storage",
   "tags": ["storage", "gcs", "google-cloud", "cloud"],
+
+  "requirements": {
+    "streamspaceVersion": ">=1.0.0"
+  },
+
+  "entrypoints": {
+    "main": "gcs_plugin.go"
+  },
+
   "permissions": ["network", "admin_ui"],
   "configSchema": {
     "type": "object",

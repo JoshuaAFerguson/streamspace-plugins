@@ -4,9 +4,19 @@
   "displayName": "PagerDuty Integration",
   "description": "Send incident alerts to PagerDuty for critical events",
   "author": "StreamSpace Team",
+  "license": "MIT",
   "type": "webhook",
   "category": "Integrations",
   "tags": ["monitoring", "pagerduty", "alerting", "incidents"],
+
+  "requirements": {
+    "streamspaceVersion": ">=1.0.0"
+  },
+
+  "entrypoints": {
+    "main": "pagerduty_plugin.go"
+  },
+
   "permissions": ["network"],
   "configSchema": {
     "type": "object",

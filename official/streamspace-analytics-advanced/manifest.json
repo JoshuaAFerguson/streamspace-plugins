@@ -4,9 +4,19 @@
   "displayName": "Advanced Analytics & Reporting",
   "description": "Comprehensive analytics and reporting for usage trends, session metrics, user engagement, resource utilization, and cost analysis",
   "author": "StreamSpace Team",
-  "type": "system",
+  "license": "MIT",
+  "type": "extension",
   "category": "Analytics",
   "tags": ["analytics", "reporting", "metrics", "insights", "cost-analysis"],
+
+  "requirements": {
+    "streamspaceVersion": ">=1.0.0"
+  },
+
+  "entrypoints": {
+    "main": "analytics_plugin.go"
+  },
+
   "permissions": ["database", "admin_ui"],
   "configSchema": {
     "type": "object",

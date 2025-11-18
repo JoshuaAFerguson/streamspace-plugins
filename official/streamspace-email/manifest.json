@@ -4,9 +4,19 @@
   "displayName": "Email SMTP Integration",
   "description": "Send email notifications via SMTP for session and user events",
   "author": "StreamSpace Team",
+  "license": "MIT",
   "type": "integration",
   "category": "Integrations",
   "tags": ["email", "smtp", "notifications", "alerts"],
+
+  "requirements": {
+    "streamspaceVersion": ">=1.0.0"
+  },
+
+  "entrypoints": {
+    "main": "email_plugin.go"
+  },
+
   "permissions": ["network"],
   "configSchema": {
     "type": "object",

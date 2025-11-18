@@ -4,9 +4,19 @@
   "displayName": "Session Recording & Playback",
   "description": "Record and replay sessions with multiple formats (webm, mp4, vnc), retention policies, and compliance-driven recording",
   "author": "StreamSpace Team",
-  "type": "system",
+  "license": "MIT",
+  "type": "extension",
   "category": "Session Management",
   "tags": ["recording", "playback", "compliance", "audit", "video"],
+
+  "requirements": {
+    "streamspaceVersion": ">=1.0.0"
+  },
+
+  "entrypoints": {
+    "main": "recording_plugin.go"
+  },
+
   "permissions": ["database", "storage", "admin_ui"],
   "configSchema": {
     "type": "object",

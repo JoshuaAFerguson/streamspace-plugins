@@ -4,9 +4,19 @@
   "displayName": "Advanced Audit Logging",
   "description": "Enhanced audit logging with search, export, retention policies, and compliance reports",
   "author": "StreamSpace Team",
-  "type": "system",
+  "license": "MIT",
+  "type": "extension",
   "category": "Security",
   "tags": ["audit", "logging", "compliance", "security"],
+
+  "requirements": {
+    "streamspaceVersion": ">=1.0.0"
+  },
+
+  "entrypoints": {
+    "main": "audit_plugin.go"
+  },
+
   "permissions": ["database", "admin_ui"],
   "configSchema": {
     "type": "object",

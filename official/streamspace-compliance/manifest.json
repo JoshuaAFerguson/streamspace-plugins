@@ -4,9 +4,19 @@
   "displayName": "Compliance & Regulatory Framework",
   "description": "Comprehensive compliance management for GDPR, HIPAA, SOC2, ISO27001, and custom frameworks",
   "author": "StreamSpace Team",
-  "type": "system",
+  "license": "MIT",
+  "type": "extension",
   "category": "Security",
   "tags": ["compliance", "gdpr", "hipaa", "soc2", "iso27001", "regulatory", "governance"],
+
+  "requirements": {
+    "streamspaceVersion": ">=1.0.0"
+  },
+
+  "entrypoints": {
+    "main": "compliance_plugin.go"
+  },
+
   "permissions": ["database", "admin_ui", "network"],
   "configSchema": {
     "type": "object",

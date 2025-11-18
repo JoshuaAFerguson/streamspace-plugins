@@ -4,9 +4,19 @@
   "displayName": "Session Snapshots & Restore",
   "description": "Create, manage, and restore session snapshots with scheduling, sharing, and storage management",
   "author": "StreamSpace Team",
-  "type": "system",
+  "license": "MIT",
+  "type": "extension",
   "category": "Session Management",
   "tags": ["snapshots", "backup", "restore", "state-management"],
+
+  "requirements": {
+    "streamspaceVersion": ">=1.0.0"
+  },
+
+  "entrypoints": {
+    "main": "snapshots_plugin.go"
+  },
+
   "permissions": ["database", "storage", "admin_ui"],
   "configSchema": {
     "type": "object",

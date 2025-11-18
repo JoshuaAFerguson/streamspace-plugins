@@ -4,9 +4,19 @@
   "displayName": "Elastic APM Integration",
   "description": "Application Performance Monitoring with Elastic APM and distributed tracing",
   "author": "StreamSpace Team",
+  "license": "MIT",
   "type": "integration",
   "category": "Monitoring",
   "tags": ["monitoring", "elastic", "apm", "performance", "tracing"],
+
+  "requirements": {
+    "streamspaceVersion": ">=1.0.0"
+  },
+
+  "entrypoints": {
+    "main": "elastic_apm_plugin.go"
+  },
+
   "permissions": ["network"],
   "configSchema": {
     "type": "object",

@@ -4,9 +4,19 @@
   "displayName": "Datadog Monitoring",
   "description": "Send metrics, traces, and logs to Datadog for comprehensive observability",
   "author": "StreamSpace Team",
+  "license": "MIT",
   "type": "integration",
   "category": "Monitoring",
   "tags": ["monitoring", "datadog", "metrics", "apm", "observability"],
+
+  "requirements": {
+    "streamspaceVersion": ">=1.0.0"
+  },
+
+  "entrypoints": {
+    "main": "datadog_plugin.go"
+  },
+
   "permissions": ["network"],
   "configSchema": {
     "type": "object",
