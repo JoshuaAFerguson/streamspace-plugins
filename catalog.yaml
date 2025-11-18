@@ -13,14 +13,14 @@ spec:
       description: Plugins maintained by the StreamSpace team
       icon: ✓
       verified: true
-      plugins: 0  # Will be updated as plugins are added
+      plugins: 26
 
     - name: community
       displayName: Community Plugins
       description: Community-contributed plugins
       icon: 🌟
       verified: false
-      plugins: 0  # Will be updated as plugins are added
+      plugins: 0
 
   pluginTypes:
     - type: extension
@@ -116,30 +116,427 @@ spec:
     - name: audit.violation
       description: Fired when an audit violation occurs
 
-  # Plugin listings (will be populated as plugins are added)
-  plugins: []
-    # Example structure:
-    # - name: session-recorder
-    #   category: official
-    #   displayName: Session Recorder
-    #   description: Record and replay user sessions
-    #   type: extension
-    #   author: StreamSpace Team
-    #   version: "1.0.0"
-    #   path: official/session-recorder
-    #   permissions:
-    #     - read:sessions
-    #     - write:sessions
-    #   tags: [recording, replay, audit]
-    #   verified: true
-    #   downloads: 0
-    #   rating: 0.0
+  # Plugin listings
+  plugins:
+    # Integrations
+    - name: streamspace-slack
+      category: official
+      displayName: Slack Integration
+      description: Send session and user event notifications to Slack channels
+      type: webhook
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-slack
+      permissions:
+        - network
+      tags: [notifications, slack, integration, messaging]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    - name: streamspace-teams
+      category: official
+      displayName: Microsoft Teams Integration
+      description: Send notifications to Microsoft Teams channels
+      type: webhook
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-teams
+      permissions:
+        - network
+      tags: [notifications, teams, microsoft, integration]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    - name: streamspace-discord
+      category: official
+      displayName: Discord Integration
+      description: Send notifications to Discord channels
+      type: webhook
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-discord
+      permissions:
+        - network
+      tags: [notifications, discord, integration]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    - name: streamspace-pagerduty
+      category: official
+      displayName: PagerDuty Integration
+      description: Send incident alerts to PagerDuty for critical events
+      type: webhook
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-pagerduty
+      permissions:
+        - network
+      tags: [monitoring, pagerduty, alerting, incidents]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    - name: streamspace-email
+      category: official
+      displayName: Email SMTP Integration
+      description: Send email notifications via SMTP for session and user events
+      type: integration
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-email
+      permissions:
+        - network
+      tags: [email, smtp, notifications, alerts]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    - name: streamspace-calendar
+      category: official
+      displayName: Calendar Integration
+      description: Integrate Google Calendar and Outlook Calendar with automated session scheduling and iCal export
+      type: integration
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-calendar
+      permissions:
+        - network
+      tags: [calendar, scheduling, google, outlook, ical]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    # Monitoring
+    - name: streamspace-datadog
+      category: official
+      displayName: Datadog Monitoring
+      description: Send metrics, traces, and logs to Datadog for comprehensive observability
+      type: integration
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-datadog
+      permissions:
+        - network
+      tags: [monitoring, datadog, metrics, apm, observability]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    - name: streamspace-newrelic
+      category: official
+      displayName: New Relic Monitoring
+      description: Send performance metrics, traces, and events to New Relic for full-stack observability
+      type: integration
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-newrelic
+      permissions:
+        - network
+      tags: [monitoring, newrelic, apm, metrics, observability]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    - name: streamspace-sentry
+      category: official
+      displayName: Sentry Error Tracking
+      description: Track errors, exceptions, and performance issues with Sentry integration
+      type: integration
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-sentry
+      permissions:
+        - network
+      tags: [monitoring, sentry, errors, exceptions, performance]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    - name: streamspace-elastic-apm
+      category: official
+      displayName: Elastic APM Integration
+      description: Application Performance Monitoring with Elastic APM and distributed tracing
+      type: integration
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-elastic-apm
+      permissions:
+        - network
+      tags: [monitoring, elastic, apm, performance, tracing]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    - name: streamspace-honeycomb
+      category: official
+      displayName: Honeycomb Observability
+      description: High-definition observability with Honeycomb for deep system analysis and debugging
+      type: integration
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-honeycomb
+      permissions:
+        - network
+      tags: [monitoring, honeycomb, observability, tracing, debugging]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    # Security
+    - name: streamspace-compliance
+      category: official
+      displayName: Compliance & Regulatory Framework
+      description: Comprehensive compliance management for GDPR, HIPAA, SOC2, ISO27001, and custom frameworks
+      type: extension
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-compliance
+      permissions:
+        - read:sessions
+        - read:users
+        - admin
+      tags: [compliance, gdpr, hipaa, soc2, iso27001, regulatory, governance]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    - name: streamspace-dlp
+      category: official
+      displayName: Data Loss Prevention (DLP)
+      description: Prevent data exfiltration with comprehensive controls for clipboard, file transfers, screen capture, printing, USB devices, and network access
+      type: extension
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-dlp
+      permissions:
+        - read:sessions
+        - write:sessions
+        - admin
+      tags: [dlp, data-loss-prevention, security, clipboard, file-transfer, exfiltration]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    - name: streamspace-audit-advanced
+      category: official
+      displayName: Advanced Audit Logging
+      description: Enhanced audit logging with search, export, retention policies, and compliance reports
+      type: extension
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-audit-advanced
+      permissions:
+        - read:sessions
+        - read:users
+        - admin
+      tags: [audit, logging, compliance, security]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    # Session Management
+    - name: streamspace-recording
+      category: official
+      displayName: Session Recording
+      description: Record and replay sessions with multiple formats (webm, mp4, vnc), retention policies, and compliance recording
+      type: extension
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-recording
+      permissions:
+        - read:sessions
+        - write:sessions
+      tags: [recording, playback, compliance, audit, session]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    - name: streamspace-snapshots
+      category: official
+      displayName: Session Snapshots & Restore
+      description: Create, manage, and restore session snapshots with scheduling, sharing, compression, and encryption
+      type: extension
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-snapshots
+      permissions:
+        - read:sessions
+        - write:sessions
+      tags: [snapshots, backup, restore, scheduling, session]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    - name: streamspace-multi-monitor
+      category: official
+      displayName: Multi-Monitor Support
+      description: Enable multi-monitor support for remote sessions
+      type: extension
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-multi-monitor
+      permissions:
+        - read:sessions
+        - write:sessions
+      tags: [multi-monitor, display, session, ui]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    # Automation
+    - name: streamspace-workflows
+      category: official
+      displayName: Workflow Automation
+      description: Automate session lifecycle with event-driven workflows, triggers, actions, and conditional logic
+      type: extension
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-workflows
+      permissions:
+        - read:sessions
+        - write:sessions
+        - admin
+      tags: [workflows, automation, triggers, actions, events]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    # Analytics
+    - name: streamspace-analytics-advanced
+      category: official
+      displayName: Advanced Analytics & Reporting
+      description: Comprehensive analytics and reporting for usage trends, session metrics, user engagement, resource utilization, and cost analysis
+      type: extension
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-analytics-advanced
+      permissions:
+        - read:sessions
+        - read:users
+        - read:templates
+      tags: [analytics, reporting, metrics, insights, cost-analysis, dashboard]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    # Authentication
+    - name: streamspace-auth-saml
+      category: official
+      displayName: SAML 2.0 Authentication
+      description: Enterprise SSO authentication with SAML 2.0 protocol - supports Okta, OneLogin, Azure AD, Google Workspace, JumpCloud, and Auth0
+      type: integration
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-auth-saml
+      permissions:
+        - admin
+      tags: [saml, sso, authentication, enterprise, okta, onelogin, azure-ad]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    - name: streamspace-auth-oauth
+      category: official
+      displayName: OAuth2 / OIDC Authentication
+      description: Modern OAuth2 and OpenID Connect authentication - supports Google, GitHub, GitLab, Okta, Azure AD, Auth0, Keycloak, and custom OIDC providers
+      type: integration
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-auth-oauth
+      permissions:
+        - admin
+      tags: [oauth2, oidc, sso, google, github, azure-ad, okta]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    # Storage
+    - name: streamspace-storage-s3
+      category: official
+      displayName: S3 Object Storage
+      description: AWS S3 and S3-compatible object storage backend for session recordings, snapshots, and file storage - supports AWS S3, MinIO, DigitalOcean Spaces, and Wasabi
+      type: integration
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-storage-s3
+      permissions:
+        - network
+      tags: [storage, s3, aws, minio, object-storage, cloud]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    - name: streamspace-storage-azure
+      category: official
+      displayName: Azure Blob Storage
+      description: Microsoft Azure Blob Storage backend for session recordings, snapshots, and file storage
+      type: integration
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-storage-azure
+      permissions:
+        - network
+      tags: [storage, azure, blob-storage, cloud, microsoft]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    - name: streamspace-storage-gcs
+      category: official
+      displayName: Google Cloud Storage
+      description: Google Cloud Storage backend for session recordings, snapshots, and file storage
+      type: integration
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-storage-gcs
+      permissions:
+        - network
+      tags: [storage, gcs, google-cloud, cloud]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    # Business
+    - name: streamspace-billing
+      category: official
+      displayName: Billing & Usage Tracking
+      description: Track resource usage, calculate costs, and manage subscriptions with Stripe integration
+      type: extension
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-billing
+      permissions:
+        - network
+        - admin
+      tags: [billing, stripe, usage, subscriptions, invoicing]
+      verified: true
+      downloads: 0
+      rating: 0.0
+
+    # Infrastructure
+    - name: streamspace-node-manager
+      category: official
+      displayName: Node Manager
+      description: Advanced Kubernetes node management with labeling, tainting, draining, and auto-scaling support
+      type: extension
+      author: StreamSpace Team
+      version: "1.0.0"
+      path: streamspace-node-manager
+      permissions:
+        - admin
+      tags: [kubernetes, nodes, infrastructure, auto-scaling, cluster-management]
+      verified: true
+      downloads: 0
+      rating: 0.0
 
   stats:
-    totalPlugins: 0
-    officialPlugins: 0
+    totalPlugins: 26
+    officialPlugins: 26
     communityPlugins: 0
-    lastUpdated: "2025-11-15"
+    lastUpdated: "2025-11-18"
     compatibleVersions:
       - "v1.0.0"
       - "v1.1.0"
